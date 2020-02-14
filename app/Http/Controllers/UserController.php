@@ -6,6 +6,7 @@ use App\BusinessSetting;
 use App\Customer;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -33,6 +34,21 @@ class UserController extends Controller
         }
         else {
             return response()->json(['code' => 200, 'message' => 'Registration successful. Please verify your email.']);
+        }
+    }
+
+    public function login(Request $request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password ])) {
+            $user = Auth::user();
+            $token =  $user->createToken('MyApp')->accessToken;
+            return response()->json([
+                'token' => $token,
+                'message' => 'Login Successful',
+                'data' => $user
+            ]);
+        } else {
+            return response()->json(['message' => 'Invalid Login', 'code' => 401]);
         }
     }
 }
