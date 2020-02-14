@@ -8,6 +8,6 @@ class Banner extends Model
 {
     public function getPhotoAttribute($value)
     {
-        return "http://www.littardoemporium.com/public/".$value;
+        return url($value);
     }
 }
