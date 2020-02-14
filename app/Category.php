@@ -8,11 +8,11 @@ class Category extends Model
 {
     public function getIconAttribute($value)
     {
-        return url($value);
+        return config('app.url').$value;
     }
 
     public function getBannerAttribute($value)
     {
-        return url($value);
+        return config('app.url').$value;
     }
 }
