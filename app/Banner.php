@@ -8,6 +8,6 @@ class Banner extends Model
 {
     public function getPhotoAttribute($value)
     {
-        return $this->baseRoute().$value;
+        return config('app.url').$value;
     }
 }
