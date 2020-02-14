@@ -8,6 +8,6 @@ class Banner extends Model
 {
     public function getPhotoAttribute($value)
     {
-        return url($value);
+        return config('app.url').$value;
     }
 }
