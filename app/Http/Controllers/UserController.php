@@ -12,6 +12,10 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
+        $user = User::where('email', $request->email)->first();
+        if($user){
+            return response()->json(['code' => 401, 'message' => 'Email exists']);
+        }
         $user = User::create([
             'name' => $request->name,
             'email' =>$request->email,
