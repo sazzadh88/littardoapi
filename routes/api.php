@@ -3,7 +3,5 @@
 
 Route::group(['prefix' => 'user'], function () {
 
-    Route::get('get/{id}', function ($id){
-        return \App\User::find($id);
-    });
+    Route::post('register','UserController@register');
 });
