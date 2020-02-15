@@ -26,4 +26,10 @@ class AppController extends Controller
         $subcategories = DB::table('sub_categories')->where('category_id', $id)->get();
         return response()->json(['message' => 'Success', 'data' => $subcategories,'code' => 200]);
     }
+
+    public function getSubSubCategory($id)
+    {
+        $sub_sub_categories = DB::table('sub_sub_categories')->where('sub_category_id', $id)->get();
+        return response()->json(['message' => 'Success', 'data' => $sub_sub_categories, 'code' => 200]);
+    }
 }
