@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Brand;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,5 +32,11 @@ class AppController extends Controller
     {
         $sub_sub_categories = DB::table('sub_sub_categories')->where('sub_category_id', $id)->get();
         return response()->json(['message' => 'Success', 'data' => $sub_sub_categories, 'code' => 200]);
+    }
+
+    public function brands()
+    {
+        $brands = Brand::all();
+        return response()->json(['message' => 'Success', 'data' => $brands, 'code' => 200]);
     }
 }
